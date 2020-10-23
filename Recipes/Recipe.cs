@@ -17,7 +17,16 @@ namespace Full_GRASP_And_SOLID
 
         public void AddStep(Step step)
         {
+            // Precondicion que exista steps 
+
+            //Operacion
             this.steps.Add(step);
+
+            // Poscondicion
+            if(!steps.Contains(step))
+            {
+                throw new Exception("step no esta en la lista");
+            }
         }
 
         public void RemoveStep(Step step)
