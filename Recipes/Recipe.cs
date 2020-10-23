@@ -22,7 +22,21 @@ namespace Full_GRASP_And_SOLID
 
         public void RemoveStep(Step step)
         {
+            // Precondicion:
+            if(!steps.Contains(step))
+            {
+                throw new Exception("step no esta en la lista");
+            }
+
+            // Operacion:
             this.steps.Remove(step);
+
+            // Poscondicion:
+            if(steps.Contains(step))
+            {
+                throw new Exception("step sigue estando");
+            }
+
         }
 
         public void PrintRecipe()
