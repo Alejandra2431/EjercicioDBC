@@ -11,7 +11,7 @@ namespace Full_GRASP_And_SOLID
 {
     public class Recipe
     {   
-        //Es una invariable que exista ena lista steps porque es necesaria para todos los metodos
+        //Es una invariable que exista una lista steps porque es necesaria para todos los metodos
         
         private ArrayList steps = new ArrayList();
 
