@@ -10,7 +10,9 @@ using System.Collections;
 namespace Full_GRASP_And_SOLID
 {
     public class Recipe
-    {
+    {   
+        //Es una invariable que exista ena lista steps porque es necesaria para todos los metodos
+        
         private ArrayList steps = new ArrayList();
 
         public Product FinalProduct { get; set; }
@@ -50,12 +52,29 @@ namespace Full_GRASP_And_SOLID
 
         public void PrintRecipe()
         {
+            //Precondicion 
+            if (this.FinalProduct.Description==null)
+            {
+                throw new Exception("FinalProduct no esta definido");
+            }
+            foreach (Step step in steps)
+            {
+                if (step.Quantity==0 && step.Input.Description==null && step.Equipment.Description== null && step.Time== 0)
+                {
+                    throw new Exception("step dentro de steps no esta bien definido");
+                }
+            }
+
+            //Operacion
             Console.WriteLine($"Receta de {this.FinalProduct.Description}:");
             foreach (Step step in this.steps)
             {
                 Console.WriteLine($"{step.Quantity} de '{step.Input.Description}' " +
                     $"usando '{step.Equipment.Description}' durante {step.Time}");
             }
+
+            //Postcondicion
+            //Se lleva a cabo la operacion imprimiendo por consola el mensaje
         }
     }
 }
